@@ -1,10 +1,16 @@
 import { GlobalStyle } from "./globalStyle";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from "./LoginPage";
 
 export default function App() {
   return (
     <>
-      <GlobalStyle/>
-      <h1>Hello everyone</h1>
+      <GlobalStyle />
+      <BrowserRouter>
+        <Routes>
+         <Route path="/"element={<LoginPage/>}/> 
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
