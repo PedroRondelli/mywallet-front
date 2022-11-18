@@ -48,5 +48,40 @@ table {
 form{
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	width: 90vw;
+
+	button{
+		height: 46px;
+		width: 100%;
+		border-radius: 5px;
+		margin: 5px;
+		background-color: #a328d6;
+		color: #ffff;
+
+		font-family: Raleway;
+		font-size: 20px;
+
+		line-height: 23px;
+		letter-spacing: 0em;
+		
+		cursor: pointer;
+	}
+}
+input{
+	height: 58px;
+	width: 100%;
+	border-radius: 5px;
+	margin:5px;
+	padding: 10px;
+	border: transparent;
+
+}
+
+::placeholder{
+	font-family: Raleway;
+	font-size: 20px;
+	line-height: 23px;
+	letter-spacing: 0em;
 }
 `;

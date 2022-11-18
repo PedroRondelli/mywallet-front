@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function LoginPage() {
@@ -7,9 +7,9 @@ export default function LoginPage() {
     <Container>
       <h1>MyWallet</h1>
       <form>
-        <input type={"email"} required></input>
-        <input type={"password"} required></input>
-        <button></button>
+        <input placeholder="E-mail" type={"email"} required></input>
+        <input placeholder="Password" type={"password"} required></input>
+        <button>Entrar</button>
       </form>
       <Link to={"/signUp"}>Primeira vez? Cadastre-se!</Link>
     </Container>
@@ -26,6 +26,12 @@ export const Container = styled.div`
   align-items: center;
 
   background-color: #8c11be;
+
+  a{
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    color: #ffff;
+  }
 
   h1 {
     font-family: "Saira Stencil One";
