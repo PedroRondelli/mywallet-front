@@ -1,7 +1,7 @@
 import { GlobalStyle } from "./globalStyle";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginPage from "./LoginPage";
-import SignUpPage from "./SignUpPage";
+import LoginPage from "./components/LoginPage";
+import SignUpPage from "./components/SignUpPage";
 
 export default function App() {
   return (
@@ -11,6 +11,7 @@ export default function App() {
         <Routes>
          <Route path="/"element={<LoginPage/>}/> 
          <Route path="/signUp" element={<SignUpPage/>} />
+         <Route path="/mainMenu"/>
         </Routes>
       </BrowserRouter>
     </>
