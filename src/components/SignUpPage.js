@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { Container } from "./LoginPage";
+import { LoginAndSingUpContainer } from "./LoginPage";
 
 export default function SignUpPage() {
   return (
-    <Container>
+    <LoginAndSingUpContainer>
       <h1>MyWallet</h1>
       <form>
         <input placeholder="Nome" required />
@@ -13,6 +13,6 @@ export default function SignUpPage() {
         <button>Cadastrar</button>
       </form>
       <Link to={"/"}>Já tem uma conta? Entre agora!</Link>
-    </Container>
+    </LoginAndSingUpContainer>
   );
 }

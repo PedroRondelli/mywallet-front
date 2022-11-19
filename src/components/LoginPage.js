@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function LoginPage() {
   return (
-    <Container>
+    <LoginAndSingUpContainer>
       <h1>MyWallet</h1>
       <form>
         <input placeholder="E-mail" type={"email"} required />
@@ -12,11 +12,11 @@ export default function LoginPage() {
         <button>Entrar</button>
       </form>
       <Link to={"/signUp"}>Primeira vez? Cadastre-se!</Link>
-    </Container>
+    </LoginAndSingUpContainer>
   );
 }
 
-export const Container = styled.div`
+export const LoginAndSingUpContainer = styled.div`
   min-height: 100vh;
   min-width: 100vw;
 
