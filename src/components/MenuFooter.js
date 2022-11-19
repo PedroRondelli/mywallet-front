@@ -31,6 +31,8 @@ const Footer = styled.div`
     position: absolute;
     top: 5px;
     left: 5px;
+    color: #ffff;
+    text-decoration: none;
   }
 
   p {

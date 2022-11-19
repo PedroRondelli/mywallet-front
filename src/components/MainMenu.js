@@ -5,15 +5,15 @@ import MenuHeader from "./MenuHeader";
 
 export default function MainMenu() {
   return (
-    <CreditAndDebitContainer>
+    <Container>
       <MenuHeader />
       <BillsNote />
       <MenuFooter/>
-    </CreditAndDebitContainer>
+    </Container>
   );
 }
 
-export const CreditAndDebitContainer = styled.div`
+export const Container = styled.div`
   min-height: 100vh;
 
   padding: 10px;

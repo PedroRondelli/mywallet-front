@@ -75,6 +75,7 @@ input{
 	margin:5px;
 	padding: 10px;
 	border: transparent;
+	box-sizing: border-box;
 
 }
 
