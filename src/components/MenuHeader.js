@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -9,18 +10,17 @@ function removeSession(navigate, config) {
     localStorage.removeItem("token");
     navigate("/");
   });
-  promise.catch((erro)=> console.log(erro))
-  
+  promise.catch((erro) => console.log(erro));
 }
 
-export default function MenuHeader() {
+export default function MenuHeader({ user }) {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const config = { headers: { Authorization: `Bearer ${token}` } };
 
   return (
     <Header>
-      <h1>{`Olá Fulano`}</h1>
+      <h1>{`Olá ${user}`}</h1>
       <ion-icon
         onClick={() => removeSession(navigate, config)}
         name="exit-outline"

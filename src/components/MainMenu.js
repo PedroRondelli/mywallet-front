@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import BillsNote from "./BillsNote";
@@ -9,6 +9,8 @@ import MenuHeader from "./MenuHeader";
 export default function MainMenu() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  const [list, setList] = useState([]);
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     if (!token) {
@@ -17,13 +19,17 @@ export default function MainMenu() {
     }
     const config = { headers: { Authorization: `Bearer ${token}` } };
     const promise = axios.get("http://localhost:5000/extract", config);
-    promise.then((resp) => console.log(resp.data));
+    promise.then((resp) => {
+      console.log(resp.data);
+      setList(resp.data.arrayAccount);
+      setUser(resp.data.name)
+    });
     promise.catch((erro) => console.log(erro));
   }, []);
   return (
     <Container>
-      <MenuHeader />
-      <BillsNote />
+      <MenuHeader user={user}/>
+      <BillsNote list={list} />
       <MenuFooter />
     </Container>
   );
