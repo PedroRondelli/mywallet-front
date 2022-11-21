@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-function login(body,event) {
-  event.preventDefault(); 
+function login(body, event) {
+  event.preventDefault();
   const promise = axios.post("http://localhost:5000/signIn", body);
   promise
     .then((resp) => console.log(resp.data))
@@ -12,10 +12,20 @@ function login(body,event) {
 }
 
 export default function LoginPage() {
+  localStorage.removeItem("token", "pedro");
+  const tokenExist = localStorage.getItem("token");
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+  useEffect(() => {
+    if (tokenExist) {
+      navigate("/mainMenu");
+      return;
+    }
+  }, []);
+
   function handleForm(e) {
     setForm({
       ...form,
@@ -42,7 +52,7 @@ export default function LoginPage() {
           onChange={handleForm}
           required
         />
-        <button onClick={(event) => login(form,event)}>Entrar</button>
+        <button onClick={(event) => login(form, event)}>Entrar</button>
       </form>
       <Link to={"/signUp"}>Primeira vez? Cadastre-se!</Link>
     </LoginAndSingUpContainer>
