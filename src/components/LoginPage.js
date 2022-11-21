@@ -8,8 +8,13 @@ function login(body, event, navigate) {
   const promise = axios.post("http://localhost:5000/signIn", body);
   promise
     .then((resp) => {
-      localStorage.setItem("token", resp.data);
-      navigate("/mainMenu");
+      if (resp.data === "User not registred") {
+        alert("Usuário não registrado");
+      } else {
+        localStorage.setItem("token", resp.data);
+        navigate("/mainMenu");
+      }
+
       console.log(resp.data);
     })
     .catch((erro) => console.log(erro));
