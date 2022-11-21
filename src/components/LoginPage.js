@@ -1,15 +1,48 @@
 import styled from "styled-components";
-// import axios from "axios";
+import axios from "axios";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
+function login(body,event) {
+  event.preventDefault(); 
+  const promise = axios.post("http://localhost:5000/signIn", body);
+  promise
+    .then((resp) => console.log(resp.data))
+    .catch((erro) => console.log(erro.response.data));
+}
 
 export default function LoginPage() {
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+  function handleForm(e) {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  }
   return (
     <LoginAndSingUpContainer>
       <h1>MyWallet</h1>
       <form>
-        <input placeholder="E-mail" type={"email"} required />
-        <input placeholder="Password" type={"password"} required />
-        <button>Entrar</button>
+        <input
+          value={form.email}
+          placeholder="E-mail"
+          type={"email"}
+          name="email"
+          onChange={handleForm}
+          required
+        />
+        <input
+          value={form.password}
+          placeholder="Password"
+          type={"password"}
+          name="password"
+          onChange={handleForm}
+          required
+        />
+        <button onClick={(event) => login(form,event)}>Entrar</button>
       </form>
       <Link to={"/signUp"}>Primeira vez? Cadastre-se!</Link>
     </LoginAndSingUpContainer>
