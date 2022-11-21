@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -7,11 +8,17 @@ import MenuHeader from "./MenuHeader";
 
 export default function MainMenu() {
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
-    if (!localStorage.getItem("token")) {
+    if (!token) {
       navigate("/");
       return;
     }
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+    const promise = axios.get("http://localhost:5000/extract", config);
+    promise.then((resp) => console.log(resp.data));
+    promise.catch((erro) => console.log(erro));
   }, []);
   return (
     <Container>
