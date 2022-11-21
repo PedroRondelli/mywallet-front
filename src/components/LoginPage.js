@@ -10,9 +10,9 @@ function login(body, event, navigate) {
     .then((resp) => {
       localStorage.setItem("token", resp.data);
       navigate("/mainMenu");
-      console.log(resp.data)
+      console.log(resp.data);
     })
-    .catch((erro) => console.log(erro.response.data));
+    .catch((erro) => console.log(erro));
 }
 
 export default function LoginPage() {
