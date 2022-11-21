@@ -3,9 +3,14 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function removeSession(navigate, config) {
-  const promise = axios.delete("http://localhost:5000/deleteSession",config);
-  localStorage.removeItem("token");
-  navigate("/");
+  const promise = axios.delete("http://localhost:5000/session", config);
+  promise.then((resp) => {
+    console.log(resp);
+    localStorage.removeItem("token");
+    navigate("/");
+  });
+  promise.catch((erro)=> console.log(erro))
+  
 }
 
 export default function MenuHeader() {

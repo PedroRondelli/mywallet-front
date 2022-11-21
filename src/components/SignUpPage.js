@@ -3,14 +3,17 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginAndSingUpContainer } from "./LoginPage";
 
-function register(event, form) {
+function register(event, form, navigate) {
   event.preventDefault();
-  const body = {...form}
-  const passwordIsConfirmed = (form.password = form.repeatPassword);
+  const body = { ...form };
+  const passwordIsConfirmed = (form.password === form.repeatPassword);
   if (passwordIsConfirmed) {
-    delete body.repeatPassword
+    delete body.repeatPassword;
     const promise = axios.post("http://localhost:5000/signUp", body);
-    promise.then((resp) => console.log(resp));
+    promise.then((resp) => {
+      console.log(resp);
+      navigate("/");
+    });
     promise.catch((erro) => console.log(erro));
     return;
   }
@@ -74,7 +77,9 @@ export default function SignUpPage() {
           type={"password"}
           required
         />
-        <button onClick={(event) => register(event, form)}>Cadastrar</button>
+        <button onClick={(event) => register(event, form, navigate)}>
+          Cadastrar
+        </button>
       </form>
       <Link to={"/"}>Já tem uma conta? Entre agora!</Link>
     </LoginAndSingUpContainer>
