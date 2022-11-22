@@ -1,11 +1,16 @@
 import axios from "axios";
+import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function saveEntry(form, event, navigate, config) {
   event.preventDefault();
-  const body = { ...form, value: Number(form.value) };
+  const body = {
+    ...form,
+    value: Number(form.value),
+    date: dayjs().format("DD/MM"),
+  };
   if (!body.value) {
     alert("Insira um número válido");
   }

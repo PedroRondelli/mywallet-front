@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 export default function Entry({ element }) {
   return (
     <EntryOrExit creditOrDebit={element.creditOrDebit}>
-      <h1>{dayjs().format("DD/MM")}</h1>
+      <h1>{element.date}</h1>
       <h2>{element.description}</h2>
       <h3>{element.value.toFixed(2)}</h3>
     </EntryOrExit>
